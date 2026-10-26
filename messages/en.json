@@ -43,7 +43,13 @@
     "tagline": "Building reliable systems for banking, fintech & enterprise.",
     "intro": "I'm a software engineer with 15+ years of experience designing and integrating enterprise platforms. I specialize in Java, Spring Boot, microservices, event-driven architecture, and complex payment and banking integrations.",
     "location": "Riyadh, Saudi Arabia",
-    "domain": "Banking & Fintech"
+    "domain": "Banking & Fintech",
+    "diagram": {
+      "panelTitle": "System Architecture / Conceptual View",
+      "caption": "Concept illustration — not a real bank system topology.",
+      "title": "Conceptual system architecture",
+      "desc": "Digital channels connect through an API gateway to an integration middleware layer, which links core banking, a payment hub and domain services over a Kafka event bus."
+    }
   },
   "NotFound": {
     "title": "Page not found",
