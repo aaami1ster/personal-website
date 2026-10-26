@@ -64,6 +64,25 @@
         "value": "Java",
         "label": "Spring Boot & backend"
       }
+    },
+    "expertise": {
+      "heading": "Expertise",
+      "banking": {
+        "title": "Banking & Payments",
+        "description": "Core banking, payment hubs, IPS/SARIE, SWIFT and middleware integration."
+      },
+      "architecture": {
+        "title": "Software Architecture",
+        "description": "Microservices, event-driven systems, CQRS and distributed integration patterns."
+      },
+      "backend": {
+        "title": "Backend Engineering",
+        "description": "Java, Spring Boot, Node.js, NestJS and API development."
+      },
+      "devops": {
+        "title": "Cloud & DevOps",
+        "description": "Kubernetes, Kafka, Docker, CI/CD and observability."
+      }
     }
   },
   "NotFound": {

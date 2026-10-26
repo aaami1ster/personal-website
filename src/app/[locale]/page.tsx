@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { MapPin, Landmark } from "lucide-react";
 import { getTranslations } from "next-intl/server";
+import { Expertise } from "@/components/home/expertise";
 import { HeroDiagram } from "@/components/home/hero-diagram";
 import { Highlights } from "@/components/home/highlights";
 import { Container } from "@/components/layout/container";
@@ -16,8 +17,9 @@ export async function generateMetadata({
 
 // Hero: intro copy on the inline-start side, architecture diagram on the
 // inline-end side from `lg` (stacked below), followed by the professional
-// highlights strip. CTAs, the terminal entry bar and the remaining homepage
-// sections are added in later jobs.
+// highlights strip and the expertise cards. CTAs, the terminal entry bar, the
+// About preview (which will sit between highlights and expertise) and the
+// remaining homepage sections are added in later jobs.
 export default async function HomePage() {
   const t = await getTranslations("Home");
 
@@ -51,6 +53,7 @@ export default async function HomePage() {
         <HeroDiagram className="lg:col-span-5" />
       </Container>
       <Highlights />
+      <Expertise />
     </>
   );
 }

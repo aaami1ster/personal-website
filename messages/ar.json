@@ -64,6 +64,25 @@
         "value": "Java",
         "label": "Spring Boot والأنظمة الخلفية"
       }
+    },
+    "expertise": {
+      "heading": "مجالات الخبرة",
+      "banking": {
+        "title": "الخدمات المصرفية والمدفوعات",
+        "description": "الأنظمة المصرفية الأساسية ومراكز المدفوعات وIPS/SARIE وSWIFT وتكامل الأنظمة الوسيطة."
+      },
+      "architecture": {
+        "title": "معمارية البرمجيات",
+        "description": "الخدمات المصغّرة (Microservices) والأنظمة القائمة على الأحداث وCQRS وأنماط التكامل الموزّعة."
+      },
+      "backend": {
+        "title": "هندسة الأنظمة الخلفية",
+        "description": "Java وSpring Boot وNode.js وNestJS وتطوير الواجهات البرمجية (APIs)."
+      },
+      "devops": {
+        "title": "الحوسبة السحابية وDevOps",
+        "description": "Kubernetes وKafka وDocker وCI/CD والمراقبة (Observability)."
+      }
     }
   },
   "NotFound": {
