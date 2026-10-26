@@ -65,6 +65,11 @@
         "label": "Spring Boot & backend"
       }
     },
+    "about": {
+      "heading": "Engineering systems that connect businesses, technology, and people.",
+      "p1": "My career spans more than 15 years across digital banking, fintech, telecommunications, and enterprise software. I have worked as a software engineer, backend team lead, and software architect, designing systems that integrate complex platforms and support critical business operations.",
+      "p2": "My work combines hands-on backend development with architecture, technical leadership, and cross-team collaboration. I focus on reliable APIs, resilient integration patterns, maintainability, and practical engineering decisions."
+    },
     "expertise": {
       "heading": "Expertise",
       "banking": {
@@ -83,6 +88,11 @@
         "title": "Cloud & DevOps",
         "description": "Kubernetes, Kafka, Docker, CI/CD and observability."
       }
+    },
+    "cta": {
+      "heading": "Let's build something reliable.",
+      "body": "Interested in backend engineering, banking integration, system architecture, or technical collaboration? I'd be glad to connect.",
+      "button": "Get in Touch"
     }
   },
   "NotFound": {
