@@ -1,0 +1,180 @@
+@import "tailwindcss";
+
+/* ── Color tokens (design spec §2.2) ─────────────────────────────────────
+   Dark is the default. next-themes sets data-theme on <html> before paint;
+   the media query covers visitors with JavaScript disabled. */
+
+:root,
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b1220;
+  --surface: #111d30;
+  --border: #1e293b;
+  --accent: #38bdf8;
+  --cta-bg: #0369a1;
+  --cta-bg-hover: #075985;
+  --success: #10b981;
+  --text: #f8fafc;
+  --text-muted: #94a3b8;
+  --danger: #f87171;
+}
+
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --border: #e2e8f0;
+  --accent: #0369a1;
+  --cta-bg: #0369a1;
+  --cta-bg-hover: #075985;
+  --success: #047857;
+  --text: #0f172a;
+  --text-muted: #475569;
+  --danger: #b91c1c;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --border: #e2e8f0;
+    --accent: #0369a1;
+    --success: #047857;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --danger: #b91c1c;
+  }
+}
+
+/* ── Typography tokens (design spec §2.3) ──────────────────────────────── */
+
+:root {
+  --fs-hero: clamp(2.25rem, 1.4rem + 3.6vw, 4.5rem);
+  --fs-page: clamp(2.125rem, 1.5rem + 2.6vw, 3.75rem);
+  --fs-section: clamp(1.75rem, 1.3rem + 1.8vw, 2.75rem);
+  --fs-card: clamp(1.25rem, 1.1rem + 0.6vw, 1.625rem);
+  --fs-body: clamp(1rem, 0.95rem + 0.2vw, 1.125rem);
+  --fs-article: clamp(1.125rem, 1.05rem + 0.3vw, 1.25rem);
+
+  --font-ui: var(--font-inter), system-ui, sans-serif;
+  --font-reading: var(--font-ui);
+}
+
+/* Inter comes first so Latin terms inside Arabic text (Java, Spring Boot,
+   IPS/SARIE) render exactly as on English pages; Inter has no Arabic glyphs,
+   so Arabic letters fall through to the Arabic face. --font-inter-face is
+   Inter without its Arial-based fallback (set on <html>, see lib/fonts.ts).
+   Declared on any :lang(ar) element so Arabic sections on English pages work. */
+:lang(ar) {
+  --font-ui: var(--font-inter-face), var(--font-plex-arabic), system-ui,
+    sans-serif;
+  --font-reading: var(--font-inter-face), var(--font-naskh),
+    var(--font-plex-arabic), serif;
+  --fs-hero: clamp(2.25rem, 1.5rem + 3vw, 4rem);
+  --fs-body: clamp(1rem, 0.96rem + 0.25vw, 1.1875rem);
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-cta: var(--cta-bg);
+  --color-cta-hover: var(--cta-bg-hover);
+  --color-success: var(--success);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-danger: var(--danger);
+
+  --font-sans: var(--font-ui);
+  --font-prose: var(--font-reading);
+  --font-mono: var(--font-jetbrains), ui-monospace, monospace;
+
+  --text-hero: var(--fs-hero);
+  --text-page: var(--fs-page);
+  --text-section: var(--fs-section);
+  --text-card: var(--fs-card);
+  --text-body: var(--fs-body);
+  --text-article: var(--fs-article);
+}
+
+@layer base {
+  *,
+  ::before,
+  ::after {
+    border-color: var(--border);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-padding-top: 5rem;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-ui);
+    font-size: var(--fs-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    line-height: 1.2;
+    text-wrap: balance;
+  }
+
+  /* Tight tracking for Latin display text only — never letter-space Arabic. */
+  :lang(en) :is(h1, h2) {
+    letter-spacing: -0.02em;
+  }
+
+  /* Re-resolve the font stack where the language changes (e.g. an Arabic
+     section on an English page). */
+  [lang] {
+    font-family: var(--font-ui);
+  }
+
+  /* Arabic needs more vertical room for ascenders, descenders and marks. */
+  :lang(ar) {
+    line-height: 1.85;
+  }
+  :lang(ar) :is(h1, h2) {
+    line-height: 1.45;
+  }
+
+  code,
+  kbd,
+  pre,
+  samp {
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    direction: ltr;
+    unicode-bidi: isolate;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::selection {
+    background: color-mix(in srgb, var(--accent) 30%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

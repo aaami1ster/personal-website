@@ -1,0 +1,69 @@
+{
+  "Metadata": {
+    "title": "Abdalla Misbah | Senior Software Engineer & Banking Integration",
+    "titleTemplate": "%s | Abdalla Misbah",
+    "description": "Senior Software Engineer in Riyadh with 15+ years of experience in Java, Spring Boot, microservices, banking integration, fintech, and enterprise software architecture."
+  },
+  "Brand": {
+    "name": "Abdalla Misbah",
+    "role": "Software Engineer",
+    "homeLabel": "Abdalla Misbah — home"
+  },
+  "SkipLink": "Skip to content",
+  "Nav": {
+    "label": "Primary",
+    "about": "About",
+    "projects": "Projects",
+    "experience": "Experience",
+    "articles": "Writing",
+    "contact": "Contact",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menuTitle": "Navigation"
+  },
+  "Theme": {
+    "toggle": "Toggle color theme"
+  },
+  "Language": {
+    "switchTo": "عربي",
+    "switchToLabel": "اقرأ هذه الصفحة بالعربية"
+  },
+  "Footer": {
+    "rights": "© {year} Abdalla Misbah",
+    "github": "GitHub",
+    "linkedin": "LinkedIn",
+    "email": "Email",
+    "credits": "Credits & Licenses",
+    "profiles": "Profiles and links"
+  },
+  "Home": {
+    "eyebrow": "Software Engineering · Banking · Fintech",
+    "greeting": "Hi, I'm Abdalla Misbah.",
+    "role": "Senior Software Engineer.",
+    "tagline": "Building reliable systems for banking, fintech & enterprise.",
+    "intro": "I'm a software engineer with 15+ years of experience designing and integrating enterprise platforms. I specialize in Java, Spring Boot, microservices, event-driven architecture, and complex payment and banking integrations.",
+    "location": "Riyadh, Saudi Arabia",
+    "domain": "Banking & Fintech"
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "body": "The page you're looking for doesn't exist or hasn't been published yet.",
+    "home": "Back to home"
+  },
+  "Credits": {
+    "title": "Credits & Licenses",
+    "intro": "This website is built entirely with free and open-source fonts, icons and libraries. Each is listed below with its license.",
+    "fonts": "Fonts",
+    "icons": "Icons",
+    "libraries": "Libraries",
+    "name": "Name",
+    "usage": "Used for",
+    "license": "License",
+    "usageInter": "English text and Latin terms",
+    "usagePlex": "Arabic headings and interface",
+    "usageNaskh": "Arabic long-form articles",
+    "usageMono": "Code and terminal",
+    "usageLucide": "Interface icons",
+    "original": "The AM. logo, diagrams and other graphics are original work."
+  }
+}
