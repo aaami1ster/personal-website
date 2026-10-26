@@ -13,7 +13,9 @@ not merge — the orchestrator merges on APPROVE.
 Run `npm run verify` once (you are the only agent running now).
 
 **APPROVE** when all of these hold:
-- the latest round is all `VERDICT: PASS`;
+- the latest round is all `VERDICT: PASS`, and every review ends with an
+  `## Evidence` section showing it checked the rendered site and cited the
+  design spec (see `factory/review-protocol.md`);
 - `npm run verify` passes;
 - every acceptance criterion is met;
 - the change stays within the spec's scope and is safe to merge without a human.

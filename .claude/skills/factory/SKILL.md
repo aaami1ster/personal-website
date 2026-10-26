@@ -76,13 +76,18 @@ after every state change (read it, update the job, write it back):
    name `builder-<id>`**. Prompt: job folder, branch `factory/<id>`, round 1.
    Wait for it.
 5. **Review round n.** Create `jobs/<id>/round-<n>/`. Set `stage: "review"` and all
-   four `reviews` to `pending`. Spawn the four reviewers **in parallel in one
-   message**, each with: job folder, round folder, branch. As each finishes, read
-   the first line of its file and update that reviewer's chip on the board.
+   four `reviews` to `pending`. **Start the preview** of the job branch (see
+   *Preview server*). Spawn the four reviewers **in parallel in one message**,
+   each with: job folder, round folder, branch, and the preview URL
+   `http://localhost:3300`. As each finishes, read the first line of its file
+   and update that reviewer's chip on the board.
 6. **WAIT FOR ALL.** The round is done only when all four
    `review-*.md` files exist in the round folder. Never message the builder
-   mid-round. If a reviewer finished without writing its file, re-spawn that
-   reviewer once; if it fails again, mark the job `needs-human` with a note.
+   mid-round. A review is **valid** only if it starts with a verdict line and
+   contains an `## Evidence` section (`factory/review-protocol.md`). If a
+   reviewer finished without a valid file, re-spawn that reviewer once (tell it
+   what was missing); if it fails again, mark the job `needs-human` with a note.
+   When all four are valid, **stop the preview**.
 7. **Route.** Move `reviews` into `rounds`.
    - Any `CHANGES` and `n < MAX_ROUNDS` → set `stage: "build"`, `round: n+1`, and
      resume the **same builder** with `SendMessage` to `builder-<id>`:
@@ -121,6 +126,21 @@ Set `stage: "build"`, `round: n+1`, clear `decision`, then resume/spawn
 `builder-<id>` pointing at that round folder, and continue the loop from step 5
 with the same round number (reviewers write into the folder that already holds
 the feedback).
+
+## Preview server
+
+Reviewers check the rendered site, not only the diff. For each review round,
+with the job branch checked out:
+
+```bash
+npm run build && npx next start -p 3300      # run in the background
+curl -s -o /dev/null -w '%{http_code}' http://localhost:3300/en   # wait for 200
+```
+
+Stop it (`pkill -f "next start -p 3300"`) when the round's reviews are all in —
+always before resuming the builder or spawning the tech-lead, since both build
+into the same `.next` folder. If the build fails, don't start reviewers:
+resume the builder with the build output instead.
 
 ## Merging
 

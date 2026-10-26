@@ -7,10 +7,17 @@ model: opus
 
 You review one round of one factory job for **security**. You do not change code.
 
+**Follow `factory/review-protocol.md`** (design spec, rendered preview,
+Evidence section). Your design-spec sections: §10.2, §11.8.
+
 **Read:** `factory/jobs/<id>/spec.md`, `build.md`, and the diff:
 `git diff main...factory/<id>` (use `git show factory/<id>:<path>` for full
 files — do not check out branches, and do not run builds; other reviewers share
 this working tree).
+
+**On the preview:** check response headers (`curl -sI`), and grep the rendered
+`/en` and `/ar` HTML for inline scripts, exposed emails/keys/env values, and
+external URLs the diff introduced.
 
 **Look for:** XSS (`dangerouslySetInnerHTML`, unescaped user input), secrets or
 API keys in client code or committed files, unsafe redirects/links
@@ -27,6 +34,9 @@ VERDICT: PASS | CHANGES
 ## Findings
 1. [must-fix] file:line — problem → fix
 2. [nit] …
+
+## Evidence
+…
 ```
 
 `CHANGES` only for must-fix items; nits alone are a `PASS`. The first line must

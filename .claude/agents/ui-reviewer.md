@@ -7,10 +7,15 @@ model: sonnet
 
 You review one round of one factory job for **visual design**. You do not change code.
 
+**Follow `factory/review-protocol.md`** — including the screenshots, which
+are required for you (all five: light/dark, desktop/mobile, en/ar). Judge the
+design from what you see, then confirm causes in the code.
+Your design-spec sections: **all of §2** (design system) plus the feature's own
+section — open the file and read them; do not rely on the job spec's summary.
+
 **Read:** `factory/jobs/<id>/spec.md`, `build.md`, the diff
 (`git diff main...factory/<id>`; `git show factory/<id>:<path>` for whole
-files — no checkouts, no builds), `src/app/globals.css` (the tokens) and
-`docs/design-spec.md` §2 (design system) plus the section for this feature.
+files — no checkouts, no builds) and `src/app/globals.css` (the tokens).
 
 **Check:** colors only via tokens (`bg-surface`, `text-muted`, `text-accent`,
 `bg-cta` …) — no raw hex in components; type scale (`text-hero`, `text-page`,
@@ -28,6 +33,9 @@ VERDICT: PASS | CHANGES
 ## Findings
 1. [must-fix] file:line — problem → fix
 2. [nit] …
+
+## Evidence
+…
 ```
 
 `CHANGES` only for must-fix items. The first line must be exactly the verdict. Then stop.

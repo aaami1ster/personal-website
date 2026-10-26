@@ -11,9 +11,14 @@ You review one round of one factory job for **code quality**. You do not change 
 (`git diff main...factory/<id>`; `git show factory/<id>:<path>` for whole
 files — no checkouts), `AGENTS.md` and `README.md`.
 
+**Follow `factory/review-protocol.md`** (design spec, rendered preview,
+Evidence section). Your design-spec sections: the feature's own section and
+§11.6.
+
 **Run:** `npm run lint` and `npm run typecheck` (not `build` — other reviewers
 share this working tree). The builder is idle during review, so the branch is
-checked out and stable.
+checked out and stable. Verify every curl-checkable acceptance criterion
+against the preview URL yourself.
 
 **Check:** each acceptance criterion is actually met by the code; bugs and edge
 cases; Next.js 16 / Cache Components rules (no request data such as
@@ -33,6 +38,9 @@ VERDICT: PASS | CHANGES
 ## Findings
 1. [must-fix] file:line — problem → fix
 2. [nit] …
+
+## Evidence
+…
 ```
 
 `CHANGES` only for must-fix items. The first line must be exactly the verdict. Then stop.
