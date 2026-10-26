@@ -49,6 +49,21 @@
       "caption": "Concept illustration — not a real bank system topology.",
       "title": "Conceptual system architecture",
       "desc": "Digital channels connect through an API gateway to an integration middleware layer, which links core banking, a payment hub and domain services over a Kafka event bus."
+    },
+    "highlights": {
+      "label": "Professional highlights",
+      "years": {
+        "value": "15+",
+        "label": "Years of experience"
+      },
+      "engineers": {
+        "value": "8",
+        "label": "Engineers led"
+      },
+      "stack": {
+        "value": "Java",
+        "label": "Spring Boot & backend"
+      }
     }
   },
   "NotFound": {
