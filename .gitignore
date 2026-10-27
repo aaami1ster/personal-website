@@ -47,3 +47,7 @@ next-env.d.ts
 
 # factory job worktrees (one per running job)
 /.worktree/
+
+# private source documents (CVs contain a phone number; interview prep notes)
+/docs/*.pdf
+/docs/tellme_about_complex_system.md
