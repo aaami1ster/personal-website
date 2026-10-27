@@ -44,3 +44,6 @@ next-env.d.ts
 # factory runtime state (written by the /factory orchestrator, not committed)
 /factory/board.json
 /factory/jobs/
+
+# factory job worktrees (one per running job)
+/.worktree/

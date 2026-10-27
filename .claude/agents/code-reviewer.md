@@ -7,7 +7,11 @@ model: sonnet
 
 You review one round of one factory job for **code quality**. You do not change code.
 
-**Read:** `factory/jobs/<id>/spec.md`, `build.md`, the diff
+**Paths.** Your prompt gives `WT` (the job's git worktree on branch
+`factory/<id>` — run every git/npm command there, and read code there) and
+`JOB` (the job's markdown folder, an absolute path outside the worktree).
+
+**Read:** `<JOB>/spec.md`, `build.md`, the diff
 (`git diff main...factory/<id>`; `git show factory/<id>:<path>` for whole
 files — no checkouts), `AGENTS.md` and `README.md`.
 
@@ -27,7 +31,7 @@ server components by default, client components only where interactive;
 duplication and dead code; names and comments match the surrounding code; no
 unrelated changes; nothing committed under `factory/`.
 
-**Write exactly one file:** `factory/jobs/<id>/round-<n>/review-code.md`
+**Write exactly one file:** `<JOB>/round-<n>/review-code.md`
 
 ```markdown
 VERDICT: PASS | CHANGES

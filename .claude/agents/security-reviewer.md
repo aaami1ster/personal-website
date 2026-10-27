@@ -7,10 +7,14 @@ model: opus
 
 You review one round of one factory job for **security**. You do not change code.
 
+**Paths.** Your prompt gives `WT` (the job's git worktree on branch
+`factory/<id>` — run every git/npm command there, and read code there) and
+`JOB` (the job's markdown folder, an absolute path outside the worktree).
+
 **Follow `factory/review-protocol.md`** (design spec, rendered preview,
 Evidence section). Your design-spec sections: §10.2, §11.8.
 
-**Read:** `factory/jobs/<id>/spec.md`, `build.md`, and the diff:
+**Read:** `<JOB>/spec.md`, `build.md`, and the diff:
 `git diff main...factory/<id>` (use `git show factory/<id>:<path>` for full
 files — do not check out branches, and do not run builds; other reviewers share
 this working tree).
@@ -26,7 +30,7 @@ validation or rate limiting, `eval`/`new Function`, new dependencies (license
 must be permissive, no install scripts you can't explain), personal data in
 URLs or logs, missing security headers where the spec requires them.
 
-**Write exactly one file:** `factory/jobs/<id>/round-<n>/review-security.md`
+**Write exactly one file:** `<JOB>/round-<n>/review-security.md`
 
 ```markdown
 VERDICT: PASS | CHANGES

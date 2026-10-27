@@ -13,12 +13,13 @@ is invalid and the orchestrator re-runs it.
 ## 2. Check the rendered site, not just the diff
 
 The orchestrator serves a production build of the job branch for the whole
-round at the **preview URL** in your prompt (normally `http://localhost:3300`).
+round at the **preview URL** in your prompt (`http://localhost:<PORT>`, one
+port per job). Below, `$URL` is that URL.
 
 ```bash
-curl -s  http://localhost:3300/en  > "$OUT/en.html"
-curl -s  http://localhost:3300/ar  > "$OUT/ar.html"
-curl -sI http://localhost:3300/en          # status and headers
+curl -s  "$URL/en"  > "$OUT/en.html"
+curl -s  "$URL/ar"  > "$OUT/ar.html"
+curl -sI "$URL/en"          # status and headers
 ```
 
 Grep the rendered HTML for what you are checking (text, `lang`/`dir`,
@@ -32,7 +33,7 @@ OUT="${TMPDIR:-/tmp}/factory-<job-id>-r<n>-<reviewer>"; mkdir -p "$OUT"
 CHROME="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
 shot() { "$CHROME" --headless --disable-gpu --hide-scrollbars \
   --user-data-dir="$OUT/profile" --window-size="$2" $4 \
-  --screenshot="$OUT/$3.png" "http://localhost:3300/$1" 2>/dev/null; }
+  --screenshot="$OUT/$3.png" "$URL/$1" 2>/dev/null; }
 shot en 1280,2400 en-desktop-light
 shot ar 1280,2400 ar-desktop-light
 shot en 1280,2400 en-desktop-dark --force-dark-mode
@@ -52,7 +53,8 @@ in `$OUT` (outside the repo).
 
 ## 4. Rules
 
-- Do not build, check out branches, or start/stop servers.
+- Do not build, check out branches, or start/stop servers. Run git and npm
+  commands inside the job worktree (`WT` in your prompt).
 - Write only your own review file.
 - `CHANGES` only for must-fix items; nits alone are a `PASS`.
 

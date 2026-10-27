@@ -65,6 +65,9 @@
   .card.human { border-color: var(--human); box-shadow: 0 0 0 3px color-mix(in srgb, var(--human) 18%, transparent); }
   .card.active { border-color: var(--accent); }
   .id { font-family: var(--mono); font-size: 11px; color: var(--muted); display: flex; justify-content: space-between; gap: 8px; }
+  .id > span:first-child { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; min-width: 0; }
+  .id > span:last-child { white-space: nowrap; }
+  .wt { font-family: var(--mono); font-size: 11px; color: var(--accent); margin-top: 8px; }
   .title { font-weight: 600; margin: 4px 0 8px; }
   .note { font-size: 12px; color: var(--muted); margin-top: 8px; }
   .card.human .note { color: var(--human); }
@@ -207,10 +210,11 @@ function renderBoard() {
       .sort((a, b) => String(b.updated ?? "").localeCompare(String(a.updated ?? "")));
     const cards = inStage.map((j) => `
       <button class="card ${j.stage === "needs-human" ? "human" : ""} ${j.id === openJobId ? "active" : ""}" data-id="${esc(j.id)}">
-        <div class="id"><span>${esc(j.id)}</span><span>${j.round ? "round " + j.round : ""}</span></div>
+        <div class="id"><span title="${esc(j.id)}">${esc(j.id)}</span><span>${j.round ? "round " + j.round : ""}</span></div>
         <div class="title">${esc(j.title ?? j.id)}</div>
         ${roundRows(j)}
         ${j.note ? `<div class="note">${esc(j.note)}</div>` : ""}
+        ${j.worktree && j.stage !== "merged" ? `<div class="wt">${esc(j.worktree)}${j.port ? " · :" + esc(j.port) : ""}</div>` : ""}
       </button>`).join("");
     const arrow = i < 4 ? '<span class="arrow">→</span>' : "";
     return `<section class="col ${stage.key === "needs-human" ? "human" : ""}">

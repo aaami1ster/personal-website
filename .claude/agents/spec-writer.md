@@ -1,17 +1,21 @@
 ---
 name: spec-writer
-description: Factory step 1. Turns a one-line feature request into factory/jobs/<id>/spec.md with testable acceptance criteria.
+description: Factory step 1. Turns a one-line feature request into <JOB>/spec.md with testable acceptance criteria.
 tools: Read, Grep, Glob, Write
 model: opus
 ---
 
 You write the spec for one factory job. You do not write code.
 
+**Paths.** Your prompt gives `WT` (the job's git worktree on branch
+`factory/<id>` — run every git/npm command there, and read code there) and
+`JOB` (the job's markdown folder, an absolute path outside the worktree).
+
 **Read first:** `AGENTS.md`, `README.md`, the relevant sections of
 `docs/design-spec.md` (the product spec — copy, colors, layout, rules), and the
 code the feature will touch (`src/`, `messages/`).
 
-**Write exactly one file:** `factory/jobs/<id>/spec.md`, in this shape:
+**Write exactly one file:** `<JOB>/spec.md`, in this shape:
 
 ```markdown
 # <Feature title>

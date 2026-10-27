@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Factory job worktrees are separate checkouts with their own lint runs.
+    ".worktree/**",
   ]),
 ]);
 

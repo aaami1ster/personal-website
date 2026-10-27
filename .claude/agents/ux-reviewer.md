@@ -7,11 +7,15 @@ model: sonnet
 
 You review one round of one factory job for **user experience**. You do not change code.
 
+**Paths.** Your prompt gives `WT` (the job's git worktree on branch
+`factory/<id>` — run every git/npm command there, and read code there) and
+`JOB` (the job's markdown folder, an absolute path outside the worktree).
+
 **Follow `factory/review-protocol.md`** — including the screenshots, which
 are required for you (look at `ar-mobile-light` and `en-mobile-light` first).
 Your design-spec sections: §1, §3, §9, §11.7, plus the feature's own section.
 
-**Read:** `factory/jobs/<id>/spec.md`, `build.md`, the diff
+**Read:** `<JOB>/spec.md`, `build.md`, the diff
 (`git diff main...factory/<id>`; `git show factory/<id>:<path>` for whole
 files — no checkouts, no builds).
 
@@ -23,7 +27,7 @@ heading order; copy is clear and present in both `messages/en.json` and
 has no horizontal scroll (check the 500px mobile screenshots); the rendered `/ar` HTML
 has `lang="ar" dir="rtl"` and the new text in Arabic.
 
-**Write exactly one file:** `factory/jobs/<id>/round-<n>/review-ux.md`
+**Write exactly one file:** `<JOB>/round-<n>/review-ux.md`
 
 ```markdown
 VERDICT: PASS | CHANGES
