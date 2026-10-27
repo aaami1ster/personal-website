@@ -20,6 +20,11 @@ npm run build && npm start
 npm run lint
 ```
 
+`dev`, `typecheck` and `build` run `velite build` first, which compiles the
+articles into `.velite/` (gitignored). After editing an article while
+`npm run dev` is running, run `npx velite build` again (or keep
+`npx velite dev` running in a second terminal).
+
 ## Structure
 
 - `src/app/[locale]/` — pages; the root layout sets `lang`/`dir` per locale
@@ -27,6 +32,13 @@ npm run lint
 - `src/proxy.ts` — locale detection and redirects (next-intl)
 - `src/i18n/` — routing, navigation helpers, request config
 - `messages/{en,ar}.json` — UI strings
+- `src/content/{en,ar}/articles/<slug>.mdx` — articles (Velite, `velite.config.ts`);
+  the file name is the slug, and the same slug in both folders means the
+  article is translated. Frontmatter: `title`, `description`, `category`
+  (`backend | banking | distributed | java | architecture`), `published`
+  (`YYYY-MM-DD`), optional `updated`, `draft` and `relatedProject` (a slug
+  from `src/data/projects.ts`). MDX components: `<Callout>`, `<Diagram>`,
+  `<Ltr>` (`src/components/mdx/`)
 - `src/components/layout/` — navbar, mobile menu, theme toggle, language switcher, footer
 - `src/app/globals.css` — color, typography and font-stack tokens
 

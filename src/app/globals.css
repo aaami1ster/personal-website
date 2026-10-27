@@ -168,6 +168,151 @@
   }
 }
 
+/* ── Article body (design spec §2.3, §7) ──────────────────────────────────
+   Long-form MDX bodies: `.prose-article font-prose text-article`. Body text
+   uses the reading stack (Noto Naskh Arabic for Arabic), headings the UI stack
+   (IBM Plex Sans Arabic). Selectors are wrapped in :where() so Tailwind
+   utilities on MDX components still win. Logical properties only, so the
+   layout mirrors in Arabic. */
+
+@layer components {
+  .prose-article {
+    max-width: 70ch;
+    line-height: 1.8;
+  }
+
+  .prose-article :where(p, ul, ol, blockquote, table) {
+    margin-block: 1.25em;
+  }
+
+  .prose-article :where(h2, h3, h4) {
+    font-family: var(--font-ui);
+    scroll-margin-top: 6rem;
+  }
+  .prose-article :where(h2) {
+    font-size: var(--fs-card);
+    font-weight: 700;
+    margin-block: 2.25em 0.75em;
+  }
+  .prose-article :where(h3) {
+    font-size: 1.2em;
+    font-weight: 600;
+    margin-block: 1.75em 0.5em;
+  }
+  .prose-article > :where(:first-child) {
+    margin-block-start: 0;
+  }
+
+  .prose-article :where(a) {
+    color: var(--accent);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .prose-article :where(strong) {
+    font-weight: 700;
+  }
+  .prose-article :where(ul) {
+    list-style: disc;
+    padding-inline-start: 1.5em;
+  }
+  .prose-article :where(ol) {
+    list-style: decimal;
+    padding-inline-start: 1.5em;
+  }
+  .prose-article :where(li) {
+    margin-block: 0.4em;
+  }
+  .prose-article :where(blockquote) {
+    border-inline-start: 4px solid var(--border);
+    padding-inline-start: 1em;
+    color: var(--text-muted);
+  }
+  .prose-article :where(hr) {
+    margin-block: 3em;
+  }
+  .prose-article :where(table) {
+    display: block;
+    overflow-x: auto;
+    border-collapse: collapse;
+    font-size: 0.9em;
+  }
+  .prose-article :where(th, td) {
+    border-block-end: 1px solid var(--border);
+    padding: 0.5em 0.75em;
+    text-align: start;
+  }
+
+  /* Inline code. */
+  .prose-article :where(:not(pre) > code) {
+    font-size: 0.875em;
+    padding: 0.1em 0.35em;
+    border: 1px solid var(--border);
+    border-radius: 0.375rem;
+    background: var(--surface);
+  }
+
+  /* Code blocks: highlighted by Shiki at build time (velite.config.ts). */
+  .prose-article :where(figure[data-rehype-pretty-code-figure]) {
+    margin-block: 1.75em;
+  }
+  .prose-article :where(pre) {
+    overflow-x: auto;
+    padding-block: 1rem;
+    border: 1px solid var(--border);
+    border-radius: 0.75rem;
+    background: var(--surface);
+    font-size: 0.875rem;
+    line-height: 1.7;
+    text-align: start;
+  }
+  .prose-article :where(pre > code) {
+    display: grid;
+    min-width: max-content;
+  }
+  .prose-article :where(pre [data-line]) {
+    padding-inline: 1rem;
+  }
+  .prose-article :where(pre [data-highlighted-line]) {
+    background: color-mix(in srgb, var(--accent) 12%, transparent);
+  }
+  .prose-article :where([data-rehype-pretty-code-title]) {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border);
+    border-block-end: 0;
+    border-start-start-radius: 0.75rem;
+    border-start-end-radius: 0.75rem;
+    font-family: var(--font-jetbrains), ui-monospace, monospace;
+    font-size: 0.8125rem;
+    color: var(--text-muted);
+    direction: ltr;
+  }
+  .prose-article :where([data-rehype-pretty-code-title] + pre) {
+    border-start-start-radius: 0;
+    border-start-end-radius: 0;
+  }
+
+  .prose-article :where(.callout-body > :first-child) {
+    margin-block-start: 0;
+  }
+  .prose-article :where(.callout-body > :last-child) {
+    margin-block-end: 0;
+  }
+}
+
+/* Shiki emits both themes as CSS variables; follow the site theme (dark by
+   default, light via data-theme or, without JavaScript, the OS preference). */
+[data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-dark);
+}
+:root[data-theme="light"] [data-rehype-pretty-code-figure] code span {
+  color: var(--shiki-light);
+}
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme]) [data-rehype-pretty-code-figure] code span {
+    color: var(--shiki-light);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   ::before,

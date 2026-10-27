@@ -306,5 +306,41 @@
     "print": "Print or save as PDF",
     "printHint": "In the print dialog, choose \"Save as PDF\".",
     "downloadPdf": "Download PDF ({size} KB)"
+  },
+  "Articles": {
+    "title": "Writing",
+    "intro": "Notes on backend engineering, banking integration, distributed systems and software architecture.",
+    "metaDescription": "Articles by Abdalla Misbah on backend engineering, banking integration, distributed systems and software architecture.",
+    "empty": "No articles have been published yet.",
+    "philosophyHeading": "How I approach engineering.",
+    "philosophyBody": "Solve the right problem with the appropriate level of complexity. Prioritize clarity, reliability, maintainability, and effective collaboration over unnecessary abstraction.",
+    "onlyIn": {
+      "en": "English only",
+      "ar": "Arabic only"
+    },
+    "onlyNotice": {
+      "en": "This article is available in English only.",
+      "ar": "This article is available in Arabic only."
+    },
+    "readingTime": "{minutes, plural, one {# min read} other {# min read}}",
+    "published": "Published {date}",
+    "updated": "Updated {date}",
+    "toc": "On this page",
+    "allArticles": "All articles",
+    "previous": "Previous article",
+    "next": "Next article",
+    "relatedProject": "Related project",
+    "categories": {
+      "backend": "Backend Engineering",
+      "banking": "Banking Integration",
+      "distributed": "Distributed Systems",
+      "java": "Java & Spring Boot",
+      "architecture": "Architecture"
+    },
+    "callout": {
+      "note": "Note",
+      "warning": "Warning",
+      "decision": "Decision"
+    }
   }
 }
