@@ -115,5 +115,20 @@
     "usageMono": "Code and terminal",
     "usageLucide": "Interface icons",
     "original": "The AM. logo, diagrams and other graphics are original work."
+  },
+  "Experience": {
+    "title": "Experience",
+    "metaDescription": "Career timeline of Abdalla Misbah: digital banking, payments, fintech, telecom and enterprise software roles since 2008.",
+    "intro": "More than 15 years across digital banking, fintech, telecommunications and enterprise software.",
+    "timelineLabel": "Career timeline",
+    "period": "<start></start> – <end></end>",
+    "present": "Present",
+    "technologies": "Technologies",
+    "education": "Education",
+    "specialization": "Specialization",
+    "finalProject": "Final project",
+    "training": "Professional training",
+    "trainingNote": "Courses and training programmes completed.",
+    "trainingBadge": "Training"
   }
 }
