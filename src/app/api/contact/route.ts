@@ -8,7 +8,12 @@ import { rateLimit } from "@/lib/rate-limit";
 // JSON, honeypot and fill time, schema, then sending. Responses carry a short
 // error code only; the message and the sender's address are never logged.
 
-const MAX_BODY_BYTES = 10_240;
+// Upper bound on the raw request body. zod limits fields in UTF-16 units, and
+// a BMP character takes up to 3 UTF-8 bytes, so the largest valid request is
+// about (100 name + 254 email + 120 organization + 5000 message + 200 website)
+// x 3 bytes plus the JSON keys: roughly 17 KB, e.g. a full-length Arabic
+// message. 32 KB leaves headroom while readBody() still bounds the read.
+const MAX_BODY_BYTES = 32_768;
 const MIN_FILL_MS = 3_000;
 const MAX_FILL_MS = 24 * 60 * 60 * 1000;
 const RATE_LIMIT = { limit: 5, windowMs: 60 * 60 * 1000 };
@@ -48,7 +53,12 @@ async function readBody(request: Request, limit: number): Promise<string | null>
   return new TextDecoder().decode(bytes);
 }
 
-/** True when an Origin header is present and names a different host than Host. */
+/**
+ * True when an Origin header is present and names a different host than Host.
+ * Relies on the proxy forwarding the original Host header (Vercel does). If a
+ * proxy rewrites Host (e.g. to the upstream address), every browser POST is
+ * treated as cross-origin and gets 403. See README "Deployment".
+ */
 function isCrossOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
   if (origin === null) return false;
@@ -62,7 +72,10 @@ function isCrossOrigin(request: Request): boolean {
 
 /**
  * Client IP for rate limiting: the first x-forwarded-for entry, else x-real-ip.
- * These headers are only trustworthy behind a proxy that sets them (e.g. Vercel).
+ * These headers are only trustworthy behind a proxy that overwrites them with
+ * the real client address (Vercel does). On a bare `npm start`, or behind a
+ * proxy that appends to a client-supplied X-Forwarded-For, clients can spoof
+ * the header and get a fresh limit per request. See README "Deployment".
  */
 function clientIp(request: Request): string {
   const forwarded = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim();
