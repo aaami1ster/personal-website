@@ -107,8 +107,12 @@ export default async function ExperiencePage({
             <li key={item.id} className="rounded-xl border bg-surface p-6">
               <h3 className="text-card font-semibold">{text(item.degree)}</h3>
               <p className="mt-1 font-medium text-accent">{item.institution[locale]}</p>
-              <p className="mt-1 text-sm text-muted">
+              <p className="mt-1 flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted">
                 <YearMonthTime value={item.year} locale={locale} />
+                <span className="inline-flex items-center gap-1.5">
+                  <MapPin aria-hidden="true" className="size-3.5 shrink-0" />
+                  {item.location[locale]}
+                </span>
               </p>
             </li>
           ))}

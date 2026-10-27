@@ -32,6 +32,7 @@ export type Education = {
   institution: Localized;
   degree: Localized;
   year: YearMonth;
+  location: Localized;
 };
 
 export type Training = {
@@ -201,8 +202,8 @@ export const roles: Role[] = [
   },
 ];
 
-// Education shows the university, degree (with honours) and year only; the
-// specialization and final project in cv.md are not shown on the site.
+// Education shows the university, degree (with honours), year and location;
+// the specialization and final project in cv.md are not shown on the site.
 export const education: Education[] = [
   {
     id: "university-of-khartoum",
@@ -212,6 +213,7 @@ export const education: Education[] = [
       ar: "بكالوريوس الهندسة الكهربائية والإلكترونية (مرتبة الشرف الأولى)",
     },
     year: { year: 2007 },
+    location: sudan,
   },
 ];
 
