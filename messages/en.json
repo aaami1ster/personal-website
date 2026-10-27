@@ -226,5 +226,53 @@
     "training": "Professional training",
     "trainingNote": "Courses and training programmes completed.",
     "trainingBadge": "Training"
+  },
+  "Contact": {
+    "metaTitle": "Contact",
+    "metaDescription": "Get in touch with Abdalla Misbah about backend engineering, banking integration, software architecture or technical collaboration.",
+    "title": "Let's connect",
+    "intro1": "I'm interested in discussing backend engineering, banking integration, software architecture, and meaningful technical collaborations.",
+    "intro2": "Whether you're hiring for a role, exploring a consulting engagement, or would simply like to exchange ideas, feel free to reach out.",
+    "intro3": "I look forward to hearing from you.",
+    "fields": {
+      "name": "Name",
+      "email": "Email",
+      "inquiry": "Inquiry type",
+      "inquiryPlaceholder": "Select an inquiry type",
+      "organization": "Organization (optional)",
+      "message": "Message",
+      "website": "Website (leave empty)"
+    },
+    "inquiry": {
+      "job": "Job opportunity",
+      "consulting": "Consulting",
+      "collaboration": "Collaboration",
+      "other": "Other"
+    },
+    "consent": "I've read the <link>privacy notice</link>.",
+    "submit": "Send message",
+    "submitting": "Sending…",
+    "errorSummary": "Please fix the following fields:",
+    "errors": {
+      "nameLength": "Enter your name (2–100 characters).",
+      "emailInvalid": "Enter a valid email address.",
+      "inquiryRequired": "Choose an inquiry type.",
+      "organizationLength": "Organization must be 120 characters or fewer.",
+      "messageLength": "Write a message of 20–5000 characters.",
+      "consentRequired": "Please confirm you've read the privacy notice."
+    },
+    "success": "Thank you — your message has been sent. I'll get back to you by email.",
+    "unavailable": "The contact form isn't available right now. Please email me directly — your message is kept below.",
+    "openEmail": "Open in your email app",
+    "rateLimited": "Too many messages were sent from your connection. Please try again later or email me directly.",
+    "failed": "Your message couldn't be sent. Please try again or email me directly.",
+    "aside": {
+      "heading": "Other ways to reach me",
+      "email": "Email",
+      "github": "GitHub",
+      "linkedin": "LinkedIn",
+      "location": "Location",
+      "city": "Riyadh"
+    }
   }
 }

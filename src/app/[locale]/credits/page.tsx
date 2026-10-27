@@ -29,6 +29,7 @@ const libraries = [
   { name: "next-intl", url: "https://github.com/amannn/next-intl", license: "MIT" },
   { name: "next-themes", url: "https://github.com/pacocoursey/next-themes", license: "MIT" },
   { name: "Radix UI", url: "https://github.com/radix-ui/primitives", license: "MIT" },
+  { name: "Zod", url: "https://github.com/colinhacks/zod", license: "MIT" },
 ] as const;
 
 export async function generateMetadata({
