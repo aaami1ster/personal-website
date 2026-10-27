@@ -178,3 +178,84 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* ── Print (A4) ───────────────────────────────────────────────────────────
+   Ink on white whatever the active theme. The site chrome (skip link,
+   navbar, footer) and on-screen controls carry `print:hidden`. Written for
+   /cv, but every page prints with these rules. `:root:not([data-theme])`
+   is listed so this block also beats the prefers-color-scheme rule above. */
+
+@media print {
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
+  }
+
+  :root,
+  [data-theme],
+  :root:not([data-theme]) {
+    color-scheme: light;
+    --bg: #fff;
+    --surface: #fff;
+    --border: #cbd5e1;
+    --accent: #0369a1;
+    --cta-bg: #0369a1;
+    --cta-bg-hover: #075985;
+    --success: #047857;
+    --text: #0f172a;
+    --text-muted: #475569;
+    --danger: #b91c1c;
+  }
+
+  /* Fixed sizes instead of viewport-based clamps; :lang(ar) is listed so the
+     Arabic body size above is overridden too. */
+  :root,
+  :lang(ar) {
+    --fs-page: 22pt;
+    --fs-section: 15pt;
+    --fs-card: 12pt;
+    --fs-body: 10.5pt;
+    --fs-article: 11pt;
+  }
+
+  body {
+    background: #fff;
+    line-height: 1.5;
+  }
+
+  /* Tighter than on screen (1.85) so a long Arabic role fits on a page. */
+  :lang(ar) {
+    line-height: 1.6;
+  }
+
+  *,
+  ::before,
+  ::after {
+    box-shadow: none !important;
+    text-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  main {
+    padding-block: 0;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
+  }
+
+  /* One role, education or training item never splits across pages. */
+  article,
+  li:has(> article) {
+    break-inside: avoid;
+  }
+
+  p,
+  li {
+    orphans: 3;
+    widows: 3;
+  }
+}

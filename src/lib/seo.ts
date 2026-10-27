@@ -11,6 +11,7 @@ export const indexablePaths = [
   "/about",
   "/contact",
   "/credits",
+  "/cv",
   "/experience",
   "/privacy",
   "/projects",
