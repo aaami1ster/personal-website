@@ -145,11 +145,7 @@
     "education": {
       "heading": "Education",
       "university": "University of Khartoum, Sudan",
-      "degree": "B.Sc. Electrical & Electronics Engineering (First Class Honours), 2007",
-      "specializationLabel": "Specialization",
-      "specialization": "Embedded Systems & Software Design",
-      "projectLabel": "Final project",
-      "project": "Autonomous UAV system (<ltr>C++</ltr>, <ltr>Assembly</ltr>)"
+      "degree": "B.Sc. Electrical & Electronics Engineering (First Class Honours), 2007"
     },
     "languages": {
       "heading": "Languages",

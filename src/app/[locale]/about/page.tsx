@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import type { ReactNode } from "react";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/layout/container";
 import type { Locale } from "@/i18n/routing";
@@ -29,7 +28,6 @@ const languages = ["arabic", "english"] as const;
 const card = "rounded-xl border bg-surface p-6";
 
 // Isolates Latin terms (C++, Assembly) next to Arabic punctuation (§9.3).
-const ltr = (chunks: ReactNode) => <span dir="ltr">{chunks}</span>;
 
 export default async function AboutPage() {
   const t = await getTranslations("About");
@@ -69,22 +67,6 @@ export default async function AboutPage() {
           <div className={`mt-6 ${card}`}>
             <p className="font-semibold">{t("education.university")}</p>
             <p className="mt-1 text-muted">{t("education.degree")}</p>
-            <dl className="mt-4 grid gap-3 text-sm">
-              <div>
-                <dt className="font-medium">
-                  {t("education.specializationLabel")}
-                </dt>
-                <dd className="mt-0.5 text-muted">
-                  {t("education.specialization")}
-                </dd>
-              </div>
-              <div>
-                <dt className="font-medium">{t("education.projectLabel")}</dt>
-                <dd className="mt-0.5 text-muted">
-                  {t.rich("education.project", { ltr })}
-                </dd>
-              </div>
-            </dl>
           </div>
         </section>
 
