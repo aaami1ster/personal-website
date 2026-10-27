@@ -55,6 +55,7 @@ in parallel with it.
 - [ ] GitHub Actions CI: npm ci + npm run verify on every push and pull request to main, Node version from package.json engines, npm cache (§11.9)
 - [ ] Playwright e2e suite: every route in en and ar with correct lang/dir, language switch keeps the page, mobile menu focus management, no horizontal scroll at 360px, axe scan with zero serious/critical violations in both themes (§11.9, §11.7)
 - [ ] Hero diagram polish from job 001 reviews: keep the "·" in "IPS/SARIE · SWIFT" when the label wraps, centre the Event Bus label under the node column, and generate SVG ids with React useId (§4.2)
+- [ ] Production monitoring with @vercel/analytics: add <Analytics /> from @vercel/analytics/next to the root layout (loads first-party from /_vercel/insights, so the CSP should need no new origin — confirm), keep it cookieless, and update /privacy in both languages to name Vercel Web Analytics and what it collects; Web Analytics must also be enabled for the project in the Vercel dashboard. Note it records page views and Web Vitals, not runtime errors — reconcile with the Umami item below so the site ships one analytics tool (§10.2, §11.8)
 
 ## 5 · Features that set the site apart
 
@@ -72,5 +73,4 @@ in parallel with it.
 - Confirm in `docs/content/cv.md`: PMP and ITIL — certification or training? Which "Sadad" project, and for which employer? Employer for GOAT / Al Qodurat and ROMOOZ.
 - Native-speaker review of all Arabic copy (diagram labels, highlights, expertise, about, CTA).
 - A phone-free CV PDF (English, and Arabic if you want one) for public/cv/.
-- Deploy: create the Vercel project, add abdallamisbah.com and www, set DNS, pick bare vs www as canonical.
 - Content for /now and /uses.
