@@ -115,5 +115,67 @@
     "usageMono": "Code and terminal",
     "usageLucide": "Interface icons",
     "original": "The AM. logo, diagrams and other graphics are original work."
+  },
+  "Projects": {
+    "title": "Projects",
+    "intro": "Selected engineering work across banking integration, payments, telecommunications and enterprise platforms.",
+    "metaDescription": "Projects by Abdalla Misbah in banking integration, payments, software architecture, backend engineering and cloud.",
+    "filterLabel": "Filter by category",
+    "all": "All",
+    "categories": {
+      "banking": "Banking & Payments",
+      "architecture": "Software Architecture",
+      "backend": "Backend Engineering",
+      "devops": "Cloud & DevOps"
+    },
+    "count": "{count, plural, one {# project} other {# projects}}",
+    "empty": "Case studies are being prepared and will appear here once they are approved.",
+    "emptyCategory": "No projects in this category yet.",
+    "draft": "Draft — not published",
+    "present": "Present",
+    "items": {
+      "digital-banking-integration": {
+        "title": "Digital Banking & Payment Integration",
+        "organization": "Sunna Al Tamyuz",
+        "role": "Senior Software Engineer — Integration",
+        "summary": "Payment and transfer integrations between digital channels, core banking and the payment hub for a digital bank in Saudi Arabia."
+      },
+      "pos-payment-aggregation": {
+        "title": "POS & Payment Aggregation",
+        "organization": "Rasid Payments",
+        "role": "Senior Backend Engineer",
+        "summary": "Backend services for a SoftPOS and payment aggregation platform, with integrations for payments, billing, transaction processing and reconciliation."
+      },
+      "zain-master-data-management": {
+        "title": "Master Data Management for Zain",
+        "organization": "Musafer Inc.",
+        "role": "Software Architect & Partner",
+        "summary": "A master data management platform for Zain Telecom subscriber data, built on microservices and Kubernetes."
+      },
+      "e15-government-receipts": {
+        "title": "E15 — National Electronic Government Receipt System",
+        "organization": "NCTR",
+        "role": "Mobile Team Lead",
+        "summary": "Sudan's electronic government receipt system for the Ministry of Finance, with an Android app that sends each transaction over REST or SMS."
+      },
+      "tanfeeth-integration": {
+        "title": "Tanfeeth Integration",
+        "organization": "Sunna Al Tamyuz",
+        "role": "Middleware Integration Engineer",
+        "summary": "Middleware integration of Tanfeeth services with bank systems, coordinating end-to-end API flows between external channels and internal banking platforms."
+      },
+      "goat-questions-generator": {
+        "title": "GOAT Questions Generator & Bank",
+        "summary": "Led the design and development of a question generator and question bank built with NestJS, Python, n8n and GPT."
+      },
+      "romooz-ecommerce": {
+        "title": "ROMOOZ Multi-role E-commerce",
+        "summary": "A multi-role e-commerce platform built with NestJS, MongoDB and React."
+      },
+      "sadad-billing": {
+        "title": "Sadad Billing",
+        "summary": "A billing platform for government and commercial sectors, built with Node.js, Kafka and Kubernetes."
+      }
+    }
   }
 }
