@@ -26,3 +26,11 @@ export function yearMonthDateTime(value: YearMonth): string {
   const year = String(value.year).padStart(4, "0");
   return value.month ? `${year}-${String(value.month).padStart(2, "0")}` : year;
 }
+
+/** "October 27, 2026" / "27 أكتوبر 2026" for an ISO calendar date ("2026-10-27"). */
+export function formatDate(isoDate: string, locale: Locale): string {
+  return new Intl.DateTimeFormat(intlLocale[locale], {
+    timeZone: "UTC",
+    dateStyle: "long",
+  }).format(new Date(`${isoDate}T00:00:00Z`));
+}
