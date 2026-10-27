@@ -296,5 +296,15 @@
       "location": "Location",
       "city": "Riyadh"
     }
+  },
+  "Cv": {
+    "metaTitle": "CV",
+    "metaDescription": "Printable CV of Abdalla Misbah, Senior Software Engineer in Riyadh: experience, education and training.",
+    "role": "Senior Software Engineer",
+    "contactLabel": "Contact details",
+    "summary": "Summary",
+    "print": "Print or save as PDF",
+    "printHint": "In the print dialog, choose \"Save as PDF\".",
+    "downloadPdf": "Download PDF ({size} KB)"
   }
 }

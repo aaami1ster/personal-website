@@ -16,7 +16,7 @@ export function ScrollAwareHeader({ children }: { children: ReactNode }) {
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 border-b bg-bg/80 backdrop-blur-md transition-colors",
+        "sticky top-0 z-40 border-b bg-bg/80 backdrop-blur-md transition-colors print:hidden",
         scrolled ? "border-border" : "border-transparent",
       )}
     >
