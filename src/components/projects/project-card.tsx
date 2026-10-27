@@ -30,11 +30,6 @@ export async function ProjectCard({ project }: { project: Project }) {
   return (
     <article className="flex h-full flex-col rounded-xl border bg-surface p-6 text-start">
       <ul className="flex flex-wrap gap-2 text-xs font-medium">
-        {!project.publishApproved && (
-          <li className="rounded-lg border border-dashed px-2 py-0.5 text-muted">
-            {t("draft")}
-          </li>
-        )}
         {project.categories.map((category) => (
           <li
             key={category}

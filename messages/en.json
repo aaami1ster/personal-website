@@ -129,9 +129,7 @@
       "devops": "Cloud & DevOps"
     },
     "count": "{count, plural, one {# project} other {# projects}}",
-    "empty": "Case studies are being prepared and will appear here once they are approved.",
     "emptyCategory": "No projects in this category yet.",
-    "draft": "Draft — not published",
     "present": "Present",
     "items": {
       "digital-banking-integration": {

@@ -129,9 +129,7 @@
       "devops": "الحوسبة السحابية وDevOps"
     },
     "count": "{count, plural, zero {لا توجد مشاريع} one {مشروع واحد} two {مشروعان} few {# مشاريع} many {# مشروعاً} other {# مشروع}}",
-    "empty": "دراسات الحالة قيد الإعداد وستظهر هنا بعد اعتمادها.",
     "emptyCategory": "لا توجد مشاريع في هذه الفئة بعد.",
-    "draft": "مسودة — غير منشورة",
     "present": "حتى الآن",
     "items": {
       "digital-banking-integration": {

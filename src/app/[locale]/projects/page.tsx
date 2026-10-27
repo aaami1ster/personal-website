@@ -9,7 +9,7 @@ import {
   type GalleryItem,
   type GalleryLabels,
 } from "@/components/projects/project-gallery";
-import { getVisibleProjects, projectCategories } from "@/data/projects";
+import { getProjects, projectCategories } from "@/data/projects";
 import type { Locale } from "@/i18n/routing";
 import { localeAlternates } from "@/lib/seo";
 
@@ -27,12 +27,12 @@ export async function generateMetadata({
 
 // Portfolio gallery (design spec §3). The page never reads `searchParams`, so
 // both locales stay prerendered: the client gallery reads `?category=` itself,
-// and its Suspense fallback is the unfiltered grid. Unapproved projects only
-// appear in development (§5); until one is approved, production shows the
-// empty state with no filters.
+// and its Suspense fallback is the unfiltered grid. Every card is public;
+// `publishApproved` gates only the future case-study pages (§5), so cards do
+// not link anywhere yet.
 export default async function ProjectsPage() {
   const t = await getTranslations("Projects");
-  const projects = getVisibleProjects();
+  const projects = getProjects();
 
   const items: GalleryItem[] = projects.map((project) => ({
     slug: project.slug,
@@ -63,17 +63,11 @@ export default async function ProjectsPage() {
     <Container className="py-20 md:py-28">
       <h1 className="text-page font-bold">{t("title")}</h1>
       <p className="mt-4 max-w-[65ch] text-muted">{t("intro")}</p>
-      {items.length === 0 ? (
-        <p className="mt-12 max-w-[65ch] rounded-xl border bg-surface p-6 text-muted">
-          {t("empty")}
-        </p>
-      ) : (
-        <Suspense
-          fallback={<ProjectGalleryView items={items} labels={labels} active="all" />}
-        >
-          <ProjectGallery items={items} labels={labels} />
-        </Suspense>
-      )}
+      <Suspense
+        fallback={<ProjectGalleryView items={items} labels={labels} active="all" />}
+      >
+        <ProjectGallery items={items} labels={labels} />
+      </Suspense>
     </Container>
   );
 }

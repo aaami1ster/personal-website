@@ -5,8 +5,9 @@
 // Unconfirmed facts are `null` (or `hasOrganization`/`hasRole: false`) and the
 // card leaves them out. No metrics, volumes or outcomes.
 //
-// `publishApproved` stays false until Abdalla approves the project (§5).
-// Unapproved projects render only in `next dev`, never in production builds.
+// Every card is public (CV-level facts only). `publishApproved` gates only the
+// project's future case-study page and its "View case study" link (§5); it
+// stays false until Abdalla approves that case study.
 
 export const projectCategories = [
   "banking",
@@ -38,6 +39,7 @@ export type Project = {
   hasOrganization: boolean;
   /** Whether `Projects.items.<slug>.role` exists. */
   hasRole: boolean;
+  /** Case study page approved for publishing (§5). Does not gate the card. */
   publishApproved: boolean;
 };
 
@@ -132,13 +134,7 @@ export const projects: readonly Project[] = [
   },
 ];
 
-/**
- * Projects to render, sorted by `order`: approved ones everywhere, drafts only
- * in development (`npm run dev`), so production never shows unapproved work.
- */
-export function getVisibleProjects(): Project[] {
-  const showDrafts = process.env.NODE_ENV === "development";
-  return projects
-    .filter((p) => p.publishApproved || showDrafts)
-    .sort((a, b) => a.order - b.order);
+/** All projects, sorted by `order`. */
+export function getProjects(): Project[] {
+  return [...projects].sort((a, b) => a.order - b.order);
 }
