@@ -1,0 +1,11 @@
+# Never upload to Vercel: secrets, local state and private documents.
+.env*
+!.env.example
+.vercel
+.next
+.worktree
+node_modules
+factory/board.json
+factory/jobs
+docs/*.pdf
+docs/tellme_about_complex_system.md
