@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 export const indexablePaths = [
   "/",
   "/about",
+  "/contact",
   "/credits",
   "/experience",
   "/projects",
