@@ -11,8 +11,10 @@ You review one round of one factory job for **user experience**. You do not chan
 `factory/<id>` — run every git/npm command there, and read code there) and
 `JOB` (the job's markdown folder, an absolute path outside the worktree).
 
-**Follow `factory/review-protocol.md`** — including the screenshots, which
-are required for you (look at `ar-mobile-light` and `en-mobile-light` first).
+**Follow `factory/review-protocol.md`.** When your prompt says
+`UI change: yes`, screenshots are required for you: open `en-mobile-light`,
+`ar-mobile-light` and `ar-desktop-light`. When it says `no`, check the rendered
+output with curl instead.
 Your design-spec sections: §1, §3, §9, §11.7, plus the feature's own section.
 
 **Read:** `<JOB>/spec.md`, `build.md`, the diff

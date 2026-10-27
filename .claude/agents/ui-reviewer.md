@@ -11,9 +11,10 @@ You review one round of one factory job for **visual design**. You do not change
 `factory/<id>` — run every git/npm command there, and read code there) and
 `JOB` (the job's markdown folder, an absolute path outside the worktree).
 
-**Follow `factory/review-protocol.md`** — including the screenshots, which
-are required for you (all five: light/dark, desktop/mobile, en/ar). Judge the
-design from what you see, then confirm causes in the code.
+**Follow `factory/review-protocol.md`.** When your prompt says
+`UI change: yes`, open all five screenshots (light/dark, desktop/mobile,
+en/ar), judge the design from what you see, then confirm causes in the code.
+When it says `no`, confirm with curl that the rendered pages are unchanged.
 Your design-spec sections: **all of §2** (design system) plus the feature's own
 section — open the file and read them; do not rely on the job spec's summary.
 

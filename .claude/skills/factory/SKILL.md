@@ -93,8 +93,10 @@ before starting the next).
    `factory/jobs/` + `-` + a short kebab-case slug. Create `<JOB>` and the worktree:
    ```bash
    git worktree add .worktree/<id> -b factory/<id> main
-   (cd .worktree/<id> && npm ci --prefer-offline --no-audit --no-fund)
+   (cd .worktree/<id> && npm ci --prefer-offline --no-audit --no-fund && npx next typegen)
    ```
+   (`next typegen` creates the route types; without it a fresh worktree's first
+   typecheck fails on `PageProps`/`LayoutProps`.)
    Add the job to the board with `stage: "spec"`, `round: 0`, `worktree`, `port`.
 3. **Spec.** Spawn `spec-writer` with the feature text, `WT`, `JOB`. Confirm
    `<JOB>/spec.md` exists.
@@ -102,17 +104,22 @@ before starting the next).
    name `builder-<id>`**, prompt: `WT`, `JOB`, branch `factory/<id>`, `PORT`,
    round 1.
 5. **Review round n.** Create `<JOB>/round-<n>/`. Set `stage: "review"` and all
-   four `reviews` to `pending`. **Start the job's preview** (see *Preview
+   four `reviews` to `pending`. Compute `UI = $(python3 factory/check_review.py
+   ui-change <WT>)` (`yes`/`no`). **Start the job's preview** (see *Preview
    server*). Spawn the four reviewers **in parallel in one message**, each with:
-   `WT`, `JOB`, round folder, branch, preview URL `http://localhost:<PORT>`.
-   As each finishes, read the first line of its file and update its chip.
+   `WT`, `JOB`, round folder, branch, preview URL `http://localhost:<PORT>`,
+   and `UI change: <UI>`. As each finishes, validate its file (step 6) and
+   update its chip.
 6. **WAIT FOR ALL.** The round is done only when all four `review-*.md` files
-   exist in the round folder. Never message the builder mid-round. A review is
-   **valid** only if it starts with a verdict line and contains an
-   `## Evidence` section (`factory/review-protocol.md`). If a reviewer finished
-   without a valid file, re-spawn it once (say what was missing); if it fails
-   again, mark the job `needs-human` with a note. When all four are valid,
-   **stop the job's preview**.
+   exist in the round folder **and are valid**. Never message the builder
+   mid-round. Validate each one — don't judge it by eye:
+   ```bash
+   python3 factory/check_review.py review <JOB>/round-<n>/review-<r>.md <r> <UI>
+   ```
+   If it prints anything but `valid`, re-spawn that reviewer once and paste the
+   checker's output into its prompt; if it fails again, mark the job
+   `needs-human` with the checker's first problem as the note. When all four are
+   valid, **stop the job's preview**.
 7. **Route.** Move `reviews` into `rounds`.
    - Any `CHANGES` and `n < MAX_ROUNDS` → set `stage: "build"`, `round: n+1`, and
      resume the **same builder** with `SendMessage` to `builder-<id>`:
@@ -122,7 +129,7 @@ before starting the next).
      `builder` with that name and the same pointer — its context is in the files.
    - All `PASS`, or `n = MAX_ROUNDS` → step 8.
 8. **Decide.** Set `stage: "decision"`. Spawn `tech-lead` with `WT`, `JOB`,
-   branch. Read the first line of `<JOB>/decision.md`.
+   branch and `UI change: <UI>`. Read the first line of `<JOB>/decision.md`.
 9. **Finish.**
    - `APPROVE` → merge (see *Merging*). Success: `stage: "merged"`, remove the
      worktree, `worktree: null`.
@@ -147,7 +154,8 @@ Only for jobs in `needs-human`. Merge (see *Merging*), then `stage: "merged"`,
 For a `needs-human` (or merged-but-unhappy) job. Write the human's note,
 verbatim, to `<JOB>/round-<n+1>/feedback-human.md` — the only content you
 author. Make sure the worktree exists: if it was removed after a merge, run
-`git worktree add .worktree/<id> -B factory/<id> main` and `npm ci` there.
+`git worktree add .worktree/<id> -B factory/<id> main`, then `npm ci` and
+`npx next typegen` there.
 Set `stage: "build"`, `round: n+1`, clear `decision`, resume/spawn
 `builder-<id>` pointing at that round folder, then continue from step 5 with
 the same round number (reviewers write into the folder that holds the feedback).

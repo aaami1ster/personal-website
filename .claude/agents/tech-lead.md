@@ -17,9 +17,10 @@ not merge — the orchestrator merges on APPROVE.
 Run `npm run verify` once (you are the only agent running now).
 
 **APPROVE** when all of these hold:
-- the latest round is all `VERDICT: PASS`, and every review ends with an
-  `## Evidence` section showing it checked the rendered site and cited the
-  design spec (see `factory/review-protocol.md`);
+- the latest round is all `VERDICT: PASS`, and every review in it is valid:
+  `python3 factory/check_review.py review <file> <reviewer> <UI change>` prints
+  `valid` for each (run it — this is the only test of review quality, so two
+  tech-leads always reach the same answer);
 - `npm run verify` passes;
 - every acceptance criterion is met;
 - the change stays within the spec's scope and is safe to merge without a human.
