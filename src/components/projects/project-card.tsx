@@ -4,10 +4,12 @@ import type { Project } from "@/data/projects";
 
 // Gallery card (design spec §4.7 anatomy, without the thumbnail and the case
 // study link, which come with later jobs): category badges, title, a muted
-// "organization · role · period" line, a two-line summary and up to four
-// stack tags. Fields that are unconfirmed (`null` / `has*: false`) are left
-// out. Years are plain Western digits in both locales (§9.4). Technology
-// names in Arabic copy are wrapped in <bdi> in the messages (§9.3).
+// "organization · role · period" line, the full summary and up to four stack
+// tags. The summary is deliberately not clamped to §4.7's two lines until case
+// studies exist to hold the rest. Fields that are unconfirmed (`null` /
+// `has*: false`) are left out. Years are plain Western digits in both locales
+// (§9.4). Technology names in Arabic copy are wrapped in <bdi> in the messages
+// and the stack tags always run left to right (§9.3).
 
 const MAX_TAGS = 4;
 
@@ -20,11 +22,13 @@ export async function ProjectCard({ project }: { project: Project }) {
   const period = project.period
     ? `${project.period.start}–${project.period.end ?? t("present")}`
     : null;
+  // Fixed field ids give the parts stable React keys.
   const meta = [
-    project.hasOrganization ? { text: t(`${key}.organization`) } : null,
-    project.hasRole ? { text: t(`${key}.role`) } : null,
-    // A year range never wraps at its dash.
-    period ? { text: period, className: "whitespace-nowrap" } : null,
+    project.hasOrganization
+      ? { id: "organization" as const, text: t(`${key}.organization`) }
+      : null,
+    project.hasRole ? { id: "role" as const, text: t(`${key}.role`) } : null,
+    period ? { id: "period" as const, text: period } : null,
   ].filter((part) => part !== null);
 
   return (
@@ -45,19 +49,24 @@ export async function ProjectCard({ project }: { project: Project }) {
       {meta.length > 0 && (
         <p className="mt-2 text-sm text-muted">
           {/* Each part is isolated so Latin names ending in punctuation
-              ("Musafer Inc.") keep their order on Arabic pages. */}
-          {meta.map((part, i) => (
-            <Fragment key={part.text}>
-              {i > 0 && " · "}
-              <bdi className={part.className}>{part.text}</bdi>
-            </Fragment>
-          ))}
+              ("Musafer Inc.") keep their order on Arabic pages, and never
+              wraps inside itself. The "·" is glued to the part after it, so a
+              line can only break before a separator, never after one. */}
+          {meta.map((part, i) => {
+            const text = <bdi className="whitespace-nowrap">{part.text}</bdi>;
+            return i === 0 ? (
+              <Fragment key={part.id}>{text}</Fragment>
+            ) : (
+              <Fragment key={part.id}>
+                {" "}
+                <span className="whitespace-nowrap">· {text}</span>
+              </Fragment>
+            );
+          })}
         </p>
       )}
-      <p className="mt-3 line-clamp-2 text-muted">
-        {t.rich(`${key}.summary`, { bdi })}
-      </p>
-      <ul className="mt-auto flex flex-wrap gap-2 pt-5">
+      <p className="mt-3 text-muted">{t.rich(`${key}.summary`, { bdi })}</p>
+      <ul dir="ltr" className="mt-auto flex flex-wrap gap-2 pt-5">
         {project.stack.slice(0, MAX_TAGS).map((tech) => (
           <li
             key={tech}
