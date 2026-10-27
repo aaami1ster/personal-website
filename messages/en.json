@@ -115,5 +115,47 @@
     "usageMono": "Code and terminal",
     "usageLucide": "Interface icons",
     "original": "The AM. logo, diagrams and other graphics are original work."
+  },
+  "About": {
+    "metaTitle": "About",
+    "metaDescription": "Senior Software Engineer in Riyadh with 15+ years in backend development, software architecture, and enterprise integration.",
+    "title": "About Abdalla",
+    "story": {
+      "p1": "I'm a Senior Software Engineer based in Riyadh, Saudi Arabia, with more than 15 years of experience in backend development, software architecture, and enterprise integration.",
+      "p2": "My professional journey began in software and embedded systems engineering and expanded into enterprise platforms, telecommunications, fintech, and digital banking.",
+      "p3": "Today, I focus primarily on Java and Spring Boot, microservices, payment integrations, and event-driven architectures. I enjoy working across the full engineering lifecycle, from understanding business requirements and defining API contracts to designing, implementing, testing, and deploying reliable backend services.",
+      "p4": "I have also led engineering teams, reviewed architectures, mentored developers, and worked with product owners, platform engineers, security teams, and external technology providers.",
+      "p5": "My engineering philosophy is to solve the right problem with the appropriate level of complexity: prioritize clarity, reliability, maintainability, and effective collaboration over unnecessary abstraction."
+    },
+    "philosophy": {
+      "heading": "Engineering philosophy",
+      "right": {
+        "title": "Solve the right problem",
+        "body": "Start from the business requirement and the API contract before choosing a design."
+      },
+      "complexity": {
+        "title": "Appropriate complexity",
+        "body": "Prefer clarity and maintainability over unnecessary abstraction."
+      },
+      "reliability": {
+        "title": "Reliability through collaboration",
+        "body": "Reliable services come from clear contracts, careful testing, and close work with every team involved."
+      }
+    },
+    "education": {
+      "heading": "Education",
+      "university": "University of Khartoum, Sudan",
+      "degree": "B.Sc. Electrical & Electronics Engineering (First Class Honours), 2007",
+      "specializationLabel": "Specialization",
+      "specialization": "Embedded Systems & Software Design",
+      "projectLabel": "Final project",
+      "project": "Autonomous UAV system (<ltr>C++</ltr>, <ltr>Assembly</ltr>)"
+    },
+    "languages": {
+      "heading": "Languages",
+      "arabic": "Arabic",
+      "english": "English"
+    },
+    "more": "More about me"
   }
 }
