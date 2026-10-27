@@ -10,12 +10,16 @@ systems live in `public-context.md` — never present those as his results.
 |---|---|---|---|---|---|
 | 1 | E15 — National Electronic Government Receipt System (Sudan) | NCTR era, 2008–2017 (confirm) | Mobile Team Lead + Android/backend developer, led 5 mobile developers | Java, Android, REST, SQL Server, SMS gateway | **Top** — richest story |
 | 2 | Digital banking & payment integration | Sunna Al Tamyuz, 2026– | Senior Software Engineer – Integration | Java, Spring Boot, microservices, banking APIs | High (design-spec §5.1 example) |
-| 3 | Tanfeeth integration | Sunna Al Tamyuz, 2026– | Middleware integration engineer | Banking middleware, APIs | Medium — very sensitive, needs permission |
+| 3 | Tanfeeth integration | Sunna Al Tamyuz, 2026– | Middleware integration engineer | Banking middleware, APIs | Medium — public card OK; full case study needs permission |
 | 4 | POS Aggregation / SoftPOS platform | Rasid Payments, 2023–2025 | Senior Backend Engineer | Java/Node.js, NestJS, Kafka, Kubernetes, PostgreSQL, Redis | High |
 | 5 | MDM for Zain Sudan | Musafer Inc., 2019–2023 | Software Architect & Partner, led 8 engineers | Microservices, Kubernetes, ELK | High |
 | 6 | GOAT / Al Qodurat Questions Generator & Bank | — (confirm employer/client) | Led design and development | NestJS, Python, PostgreSQL, n8n, Kubernetes, GPT | Medium — AI angle |
 | 7 | ROMOOZ — multi-role e-commerce | MAMAW Inc. era (confirm) | — | NestJS, MongoDB, React | Low |
-| 8 | Sadad — high-volume billing for government/commercial sectors | — (confirm which "Sadad" and employer) | — | Node.js, Kafka, Kubernetes | Hold until clarified |
+| 8 | Sadad — high-volume billing for government/commercial sectors | — (confirm which "Sadad" and employer) | — | Node.js, Kafka, Kubernetes | Public card OK; case study on hold until clarified |
+
+**Public project cards (Abdalla, 2026-10-27):** all eight cards on /projects may
+be public with CV-level facts only — including Tanfeeth and Sadad. The
+`publishApproved` flag gates only full case-study pages.
 
 ## 1. E15 — National Electronic Government Receipt System
 
