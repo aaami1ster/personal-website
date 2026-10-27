@@ -18,9 +18,19 @@ const inquiryLabels: Record<InquiryType, string> = {
   other: "Other",
 };
 
-/** Removes CR/LF (and other line breaks) so user input cannot add header lines. */
+/**
+ * Makes user input safe for the subject and the single-line body fields (name,
+ * organization): runs of control characters (\p{Cc}: CR, LF, TAB, VT, FF, NUL,
+ * NEL...) and line/paragraph separators become one space, so input cannot add
+ * header or body lines; bidi embedding, override and isolate characters
+ * (U+202A-U+202E, U+2066-U+2069) are removed so the text cannot display
+ * misleadingly. LRM, RLM and ALM are kept: they can appear in Arabic names.
+ */
 function singleLine(value: string): string {
-  return value.replace(/[\r\n\u2028\u2029]+/g, " ").trim();
+  return value
+    .replace(/[\p{Cc}\p{Zl}\p{Zp}]+/gu, " ")
+    .replace(/[\u202A-\u202E\u2066-\u2069]/gu, "")
+    .trim();
 }
 
 /** Returns true when Resend accepted the email (2xx). */
@@ -31,10 +41,10 @@ export async function sendContactEmail(
   const inquiry = inquiryLabels[input.inquiry];
   const subject = singleLine(`[Website] ${inquiry} — ${input.name}`);
   const text = [
-    `Name: ${input.name}`,
+    `Name: ${singleLine(input.name)}`,
     `Email: ${input.email}`,
     `Inquiry: ${inquiry}`,
-    `Organization: ${input.organization || "—"}`,
+    `Organization: ${singleLine(input.organization ?? "") || "—"}`,
     "",
     input.message,
   ].join("\n");

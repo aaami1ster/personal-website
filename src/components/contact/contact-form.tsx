@@ -387,6 +387,17 @@ export function ContactForm({ labels }: { labels: ContactFormLabels }) {
   );
 }
 
+/**
+ * Replaces lone surrogates (e.g. from a bad paste) with U+FFFD so
+ * encodeURIComponent cannot throw. toWellFormed is missing in Safari < 16.4
+ * and Firefox < 119, hence the regex fallback.
+ */
+function wellFormed(s: string): string {
+  return typeof s.toWellFormed === "function"
+    ? s.toWellFormed()
+    : s.replace(/\p{Cs}/gu, "\uFFFD");
+}
+
 /** mailto: link to Abdalla, prefilled with what the visitor typed. */
 function buildMailto(values: Values, labels: ContactFormLabels): string {
   const inquiry = (inquiryTypes as readonly string[]).includes(values.inquiry)
@@ -408,5 +419,5 @@ function buildMailto(values: Values, labels: ContactFormLabels): string {
   const chars = Array.from(body);
   if (chars.length > MAILTO_BODY_MAX) body = `${chars.slice(0, MAILTO_BODY_MAX).join("")}…`;
 
-  return `mailto:${site.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  return `mailto:${site.email}?subject=${encodeURIComponent(wellFormed(subject))}&body=${encodeURIComponent(wellFormed(body))}`;
 }

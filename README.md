@@ -32,3 +32,28 @@ npm run lint
 
 Use logical CSS utilities (`ms-*`, `pe-*`, `start-*`, `text-start`) rather than
 left/right ones so layouts mirror correctly in Arabic.
+
+## Deployment
+
+The site targets Vercel. The contact endpoint (`POST /api/contact`, design
+spec §10.2) depends on two proxy headers, which Vercel sets correctly:
+
+- **Rate limit** — the per-IP limit keys on the first `X-Forwarded-For`
+  entry, else `X-Real-IP`. On a bare `npm start` with no proxy in front,
+  clients can send their own `X-Forwarded-For` and get past the limit.
+- **Origin check** — a request whose `Origin` names a different host than
+  `Host` is rejected with 403. If a proxy rewrites `Host` (e.g. to the
+  upstream address), every browser POST returns 403.
+
+Behind any other reverse proxy, overwrite the client-address headers (do not
+append to a client-supplied `X-Forwarded-For`) and forward the original
+`Host`. With nginx:
+
+```nginx
+location / {
+    proxy_pass http://127.0.0.1:3000;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $remote_addr;
+}
+```
