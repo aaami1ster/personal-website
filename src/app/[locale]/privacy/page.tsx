@@ -26,6 +26,14 @@ export async function generateMetadata({
   };
 }
 
+const sections = [
+  { heading: "formHeading", paragraphs: ["formBody", "formFallback"] },
+  { heading: "abuseHeading", paragraphs: ["abuseBody"] },
+  { heading: "retentionHeading", paragraphs: ["retentionBody"] },
+  { heading: "storageHeading", paragraphs: ["storageBody"] },
+  { heading: "analyticsHeading", paragraphs: ["analyticsBody", "hostingLogs"] },
+] as const;
+
 const link = "text-accent underline-offset-4 hover:underline";
 const body = "mt-4 max-w-[65ch] text-muted";
 
@@ -41,14 +49,6 @@ export default async function PrivacyPage({
 }: PageProps<"/[locale]/privacy">) {
   const { locale } = await params;
   const t = await getTranslations("Privacy");
-
-  const sections = [
-    { heading: "formHeading", paragraphs: ["formBody", "formFallback"] },
-    { heading: "abuseHeading", paragraphs: ["abuseBody"] },
-    { heading: "retentionHeading", paragraphs: ["retentionBody"] },
-    { heading: "storageHeading", paragraphs: ["storageBody"] },
-    { heading: "analyticsHeading", paragraphs: ["analyticsBody", "hostingLogs"] },
-  ] as const;
 
   return (
     <Container className="max-w-[880px] py-20 md:py-28">
