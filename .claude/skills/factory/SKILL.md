@@ -185,10 +185,12 @@ Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>"
 git worktree remove .worktree/<id>
 ```
 
-If the merged job changed `package.json` or `package-lock.json`, also run
-`npm ci` in `ROOT`, then restart the dev server on :3000 with a fresh cache
-(`pkill -f "next dev"; rm -rf .next/dev; npm run dev` in the background) — a
-running dev server keeps stale module paths and serves 500s until restarted.
+After **every** merge, restart the dev server on :3000 with a fresh cache
+(`pkill -f "next dev"; rm -rf .next/dev; npm run dev` in the background), and
+first run `npm ci` in `ROOT` if the merge changed `package.json` or
+`package-lock.json`. A running dev server keeps stale modules across merges
+(missing exports, old dependency paths) and serves 500s that the production
+build doesn't have. Then curl the job's pages on :3000 and expect 200.
 
 **Conflict** (another job merged first and touched the same files):
 `git merge --abort`, then resume `builder-<id>`: "Merge `main` into your branch
