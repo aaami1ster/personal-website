@@ -9,6 +9,7 @@ import { site } from "@/lib/site";
 export const indexablePaths = [
   "/",
   "/about",
+  "/articles",
   "/contact",
   "/credits",
   "/experience",
@@ -37,6 +38,27 @@ export function languageAlternates(
     routing.locales.map((l) => [l, localePath(l, path, origin)]),
   );
   languages["x-default"] = localePath(routing.defaultLocale, path, origin);
+  return languages;
+}
+
+/**
+ * hreflang map for a path that exists only in some locales (articles, §7):
+ * one entry per existing locale, plus `x-default` only when the default
+ * locale exists. Relative by default; pass `origin` for absolute URLs.
+ */
+export function existingLanguageAlternates(
+  path: string,
+  locales: readonly Locale[],
+  origin = "",
+): Record<string, string> {
+  const languages: Record<string, string> = Object.fromEntries(
+    routing.locales
+      .filter((l) => locales.includes(l))
+      .map((l) => [l, localePath(l, path, origin)]),
+  );
+  if (locales.includes(routing.defaultLocale)) {
+    languages["x-default"] = localePath(routing.defaultLocale, path, origin);
+  }
   return languages;
 }
 

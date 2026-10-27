@@ -30,6 +30,10 @@ const libraries = [
   { name: "next-themes", url: "https://github.com/pacocoursey/next-themes", license: "MIT" },
   { name: "Radix UI", url: "https://github.com/radix-ui/primitives", license: "MIT" },
   { name: "Zod", url: "https://github.com/colinhacks/zod", license: "MIT" },
+  { name: "Velite", url: "https://github.com/zce/velite", license: "MIT" },
+  { name: "Shiki", url: "https://github.com/shikijs/shiki", license: "MIT" },
+  { name: "rehype-pretty-code", url: "https://github.com/rehype-pretty/rehype-pretty-code", license: "MIT" },
+  { name: "rehype-slug", url: "https://github.com/rehypejs/rehype-slug", license: "MIT" },
 ] as const;
 
 export async function generateMetadata({
