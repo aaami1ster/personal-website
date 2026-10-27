@@ -33,6 +33,7 @@
     "github": "GitHub",
     "linkedin": "LinkedIn",
     "email": "Email",
+    "privacy": "Privacy",
     "credits": "Credits & Licenses",
     "profiles": "Profiles and links"
   },
@@ -115,6 +116,27 @@
     "usageMono": "Code and terminal",
     "usageLucide": "Interface icons",
     "original": "The AM. logo, diagrams and other graphics are original work."
+  },
+  "Privacy": {
+    "title": "Privacy notice",
+    "metaDescription": "What this website collects, why, and how to request deletion.",
+    "updated": "Last updated: <time>{date}</time>",
+    "intro": "This is the personal website of Abdalla Misbah, based in Riyadh, Saudi Arabia. It collects as little as possible. This page explains exactly what that is.",
+    "formHeading": "Contact form",
+    "formBody": "When you send the form, it collects your name, email, inquiry type, organization (optional) and message. These are used only to reply to you. They are validated on the server and sent as an email to Abdalla's inbox through an email delivery provider (<code>Resend</code>), which processes them only to deliver that email. They are not stored in a database, and message contents are not written to logs.",
+    "formFallback": "If email delivery is not set up, the form opens your own email app instead and the site receives nothing.",
+    "abuseHeading": "Spam protection",
+    "abuseBody": "To limit abuse, your IP address is used to count submissions per hour. It is held only for that rate-limit window and is not linked to your message. A hidden field and a minimum fill time also filter out bots.",
+    "retentionHeading": "Retention",
+    "retentionBody": "Messages stay in Abdalla's email inbox as long as needed to reply and follow up, and are deleted on request.",
+    "storageHeading": "Cookies and local storage",
+    "storageBody": "There are no tracking or advertising cookies. <code>NEXT_LOCALE</code> is a session cookie that remembers your language choice. It is set only when the language you choose differs from your browser's preferred language. <code>theme</code> in <code>localStorage</code> remembers light/dark/system and never leaves your browser.",
+    "analyticsHeading": "Analytics",
+    "analyticsBody": "The site uses no analytics or tracking scripts. If privacy-friendly analytics is added later, this page will be updated first.",
+    "hostingLogs": "Separately, the hosting provider may keep standard request logs (IP address, browser, page requested) for security and operations.",
+    "rightsHeading": "Your requests",
+    "rightsBody": "To ask what Abdalla holds about you, or to have your messages deleted, email <link>{email}</link>.",
+    "changes": "If this notice changes, the date above will be updated."
   },
   "Projects": {
     "title": "Projects",
