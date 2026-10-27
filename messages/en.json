@@ -213,5 +213,18 @@
       "english": "English"
     },
     "more": "More about me"
+  },
+  "Experience": {
+    "title": "Experience",
+    "metaDescription": "Career timeline of Abdalla Misbah: digital banking, payments, fintech, telecom and enterprise software roles since 2008.",
+    "intro": "More than 15 years across digital banking, fintech, telecommunications and enterprise software.",
+    "timelineLabel": "Career timeline",
+    "period": "<start></start> – <end></end>",
+    "present": "Present",
+    "technologies": "Technologies",
+    "education": "Education",
+    "training": "Professional training",
+    "trainingNote": "Courses and training programmes completed.",
+    "trainingBadge": "Training"
   }
 }
