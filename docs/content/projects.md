@@ -8,7 +8,7 @@ systems live in `public-context.md` — never present those as his results.
 
 | # | Project | Employer / period | Role | Stack | Case-study priority |
 |---|---|---|---|---|---|
-| 1 | E15 — National Electronic Government Receipt System (Sudan) | NCTR era, 2008–2017 (confirm) | Mobile Team Lead + Android/backend developer, led 5 mobile developers | Java, Android, REST, SQL Server, SMS gateway | **Top** — richest story |
+| 1 | E15 — National Electronic Government Receipt System (Sudan) | NCTR (confirmed by Abdalla), period within 2008–2017 | Mobile Team Lead + Android/backend developer, led 5 mobile developers | Java, Android, REST, SQL Server, SMS gateway | **Top** — richest story |
 | 2 | Digital banking & payment integration | Sunna Al Tamyuz, 2026– | Senior Software Engineer – Integration | Java, Spring Boot, microservices, banking APIs | High (design-spec §5.1 example) |
 | 3 | Tanfeeth integration | Sunna Al Tamyuz, 2026– | Middleware integration engineer | Banking middleware, APIs | Medium — public card OK; full case study needs permission |
 | 4 | POS Aggregation / SoftPOS platform | Rasid Payments, 2023–2025 | Senior Backend Engineer | Java/Node.js, NestJS, Kafka, Kubernetes, PostgreSQL, Redis | High |
