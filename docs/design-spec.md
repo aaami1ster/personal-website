@@ -601,7 +601,7 @@ Do not imply a formally offered consulting service.
 
 - Next.js route handler `app/api/contact/route.ts` (or a Server Action). Same Zod schema validates on client and server.
 - Abuse protection: honeypot + minimum fill time (e.g. reject < 3s) + rate limit per IP (e.g. 5 / hour). On Vercel use a shared store (e.g. Upstash Redis free tier); on a VPS, Redis or an in-process limiter.
-- Email via Resend (or equivalent). API key in server env vars only; never exposed to the browser. Send to Abdalla's inbox (`CONTACT_TO_EMAIL=aaami1ster@gmail.com`, server env var) with `reply-to` = sender. The sending `from` address must be on a domain verified with the provider, so it cannot be the Gmail address — use e.g. `contact@<site-domain>` once the domain is chosen. Escape all user content in the email body.
+- Email via Resend (or equivalent). API key in server env vars only; never exposed to the browser. Send to Abdalla's inbox (`CONTACT_TO_EMAIL=aaami1ster@gmail.com`, server env var) with `reply-to` = sender. The sending `from` address must be on a domain verified with the provider, so it cannot be the Gmail address — use `contact@abdallamisbah.com` (verify the domain with the provider). Escape all user content in the email body.
 - Data minimization: do not store submissions in a database; do not log message bodies.
 - Privacy notice (`/privacy`): what is collected, why, the email provider used as processor, retention, analytics used (prefer cookieless, e.g. self-hosted Umami — MIT), contact for deletion requests.
 
@@ -781,7 +781,7 @@ HTTPS only (HSTS) · security headers: CSP (no `unsafe-eval`), `X-Content-Type-O
 
 | # | Decision | Default until decided |
 |---|---|---|
-| 1 | Domain name | Deploy to preview URL; `NEXT_PUBLIC_SITE_URL` env var drives canonicals |
+| 1 | ~~Domain name~~ | **Decided: `abdallamisbah.com`.** It is the default `site.url`; `NEXT_PUBLIC_SITE_URL` overrides it for previews |
 | 2 | Show availability badge? | Hidden |
 | 3 | Professional portrait on About? | Omit |
 | 4 | Fourth project (gallery only) | Hidden until content is provided |
