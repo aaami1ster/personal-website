@@ -6,7 +6,7 @@ import { site } from "@/lib/site";
  * Indexable locale-independent paths, listed in the sitemap for every locale.
  * Each new page adds its path here (and later its slugs from the content loaders).
  */
-export const indexablePaths = ["/", "/credits", "/projects"] as const;
+export const indexablePaths = ["/", "/about", "/credits", "/projects"] as const;
 
 /** Absolute site origin without a trailing slash, e.g. "https://example.com". */
 export const siteOrigin = site.url.replace(/\/+$/, "");

@@ -87,8 +87,8 @@ troubleshooting, and cross-team coordination.
 ## Education
 
 - **University of Khartoum** — B.Sc. Electrical & Electronics Engineering (**1st Class Honours**), 2007, Sudan
-- Specialization: Embedded Systems & Software Design
-- Final project: Autonomous UAV system (C++, Assembly)
+- Specialization: Embedded Systems & Software Design — **not shown on the site** (Abdalla, 2026-10-27)
+- Final project: Autonomous UAV system (C++, Assembly) — **not shown on the site** (Abdalla, 2026-10-27)
 
 ## Technical skills
 
